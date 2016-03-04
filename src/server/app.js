@@ -10,6 +10,8 @@ var swig = require('swig');
 
 // *** routes *** //
 var routes = require('./routes/index.js');
+var categoryRoutes = require('./routes/categories.js');
+var imageRoutes = require('./routes/images.js');
 
 
 // *** express instance *** //
@@ -35,8 +37,15 @@ app.use(express.static(path.join(__dirname, '../client')));
 
 
 // *** main routes *** //
+
+// all marketing-related pages in here (e.g. about, contact)
 app.use('/', routes);
 
+// all routes related to categories
+app.use('/categories', categoryRoutes);
+
+// all routes related to images
+app.use('/images', imageRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
